@@ -1,6 +1,9 @@
 // =============================================================================
 // Ryan M. Schuetzler, Ph.D. — Academic CV
-// Typst version, migrated from XeLaTeX
+// Typst version, migrated from XeTeX
+// Original XeTeX template: https://nitens.org/w/cvtex/
+// This work is licensed under CC BY-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/
+
 // =============================================================================
 //
 // COMPILING:
@@ -151,7 +154,7 @@
 #set block(spacing: 0.65em)
 
 // ---------------------------------------------------------------------------
-// LINK STYLING
+// LINK & STYLING
 // ---------------------------------------------------------------------------
 #show link: set text(fill: rgb("#191970")) // MidnightBlue
 #show "&": text.with(features: ("salt",)) // Fancy Linux Libertine ampersand
@@ -159,7 +162,7 @@
 // ---------------------------------------------------------------------------
 // HEADING STYLES
 // ---------------------------------------------------------------------------
-// h1 = \section*  → Large, medium weight, upright
+// h1
 #show heading.where(level: 1): it => {
   v(0.8em)
   block(breakable: false, below: 0.4em)[
@@ -168,7 +171,7 @@
   ]
 }
 
-// h2 = \subsection* → normal size, small caps
+// h2
 #show heading.where(level: 2): it => {
   v(0.6em)
   block(breakable: false, below: 0.3em)[
@@ -177,7 +180,7 @@
   ]
 }
 
-// h3 = \subsubsection* → large, medium weight
+// h3
 #show heading.where(level: 3): it => {
   v(0.4em)
   block(breakable: false, below: 0.2em)[
@@ -192,7 +195,7 @@
 // ---------------------------------------------------------------------------
 // HELPER: margin year annotation
 // ---------------------------------------------------------------------------
-// Places the year string in the left margin, matching the LaTeX \years{} command
+// Places the year string in the left margin
 #let years(body) = {
   place(dx: -1in, box(width: 1.0in, align(left, text(size: 8pt, body))))
 }
@@ -224,16 +227,17 @@ Brigham Young University\
 Provo, UT #raw("84602") U.S.A.
 
 #v(0.2em)
-email: #link("mailto:ryan.schuetzler@byu.edu")[ryan.schuetzler\@byu.edu]\
-#smallcaps[url]: #link("https://www.schuetzler.net")[https://www.schuetzler.net]
+#smallcaps[email]: #link("mailto:ryan.schuetzler@byu.edu")[ryan.schuetzler\@byu.edu]\
+#smallcaps[homepage]: #link("https://www.schuetzler.net")[https://www.schuetzler.net]
 
 // ---------------------------------------------------------------------------
 = Current Position
 // ---------------------------------------------------------------------------
-_Associate Professor_\
+#entry[2023--present][_Associate Professor_\
 Department of Information Systems\
 Marriott School of Management\
 Brigham Young University
+]
 
 // ---------------------------------------------------------------------------
 = Research Interests
@@ -253,6 +257,7 @@ Conversational Agents #sym.bullet Human-Computer Interaction #sym.bullet Human-A
 = Previous Appointments
 // ---------------------------------------------------------------------------
 
+#entry[2020--2023][Brigham Young University, Assistant Professor]
 #entry[2015--2020][University of Nebraska at Omaha, Assistant Professor]
 
 // ---------------------------------------------------------------------------
@@ -428,7 +433,7 @@ see the concepts they learn about in action.
 
 - Provide fully virtual lab activities for instruction during COVID-19 pandemic when in-person lab activities were impractical
 - Add full module on AWS Cloud Practitioner materials, encouraging students to begin receiving certifications to enhance employment prospects (6 students certified in 2022)
-- Introduced PollEverywhere to the classroom to allow in-person and remote students to interact, ask questions, and engage with material during lecture time
+- Introduced live polling (first with PollEverywhere, then with Chattr Live) to the classroom to allow in-person and remote students to interact, ask questions, and engage with material during lecture time
 
 === Omaha
 
@@ -547,10 +552,5 @@ comprehended the material.
 
 #align(center, text(size: 8pt)[
   Last updated: #datetime.today().display("[month repr:long] [day], [year]") #sym.bullet
-  Typeset in #link("https://typst.app")[Typst]
+  Typeset in #link("https://typst.app")[Typst] 
 ])
-
-
-// ---------------------------------------------------------------------------
-// (Bibliography is handled by Pergamon — no hidden bibliography needed)
-// ---------------------------------------------------------------------------
