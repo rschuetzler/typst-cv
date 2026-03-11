@@ -37,7 +37,7 @@
   print-identifiers: (),
   link-titles: false,
   print-eprint: false,
-  name-format: "{family}, {given}.",
+  name-format: "{family}, {given}",
   format-quotes: it => it,
   format-journaltitle: it => emph(it) + [,],
   suppress-fields: ("eventtitle", "note", "extradate"),
@@ -57,6 +57,18 @@
     "number": (dffmt, value, ent, field, opts, sty) => [#("(" + value + ")")],
     "volume": (dffmt, value, ent, field, opts, sty) => emph(value),
     "parsed-author": (dffmt, value, ent, field, opts, sty) => {
+      if value == none { none } else {
+        let processed = value.map(d => {
+          let given = d.at("given", default: "")
+          let initials = given.split(" ").filter(p => p.len() > 0).map(p => {
+            if p.ends-with(".") { p } else { p.at(0) + "." }
+          }).join(" ")
+          d + (given: initials)
+        })
+        dffmt(processed, ent, field, opts, sty)
+      }
+    },
+    "parsed-editor": (dffmt, value, ent, field, opts, sty) => {
       if value == none { none } else {
         let processed = value.map(d => {
           let given = d.at("given", default: "")
