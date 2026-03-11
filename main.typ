@@ -41,7 +41,7 @@
   format-quotes: it => it,
   format-journaltitle: it => emph(it) + [,],
   suppress-fields: ("eventtitle", "note", "extradate"),
-  bibstring: ("in": "", "urlseen": "", "page": "p.", "pages": "pp."),
+  bibstring: ("in": none, "urlseen": none, "page": "p.", "pages": "pp."),
   volume-number-separator: "",
   format-fields: (
     "parsed-date": (dffmt, value, ent, field, opts, sty) =>
@@ -82,7 +82,7 @@
     },
 
   ),
-  list-end-delim-two: ", & ",
+  list-end-delim-two: " & ",
   list-end-delim-many: ", & ",
 )
 
